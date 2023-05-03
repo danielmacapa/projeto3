@@ -41,14 +41,14 @@ Route::controller(CategoryController::class)
     Route::put('/put',          'put'       )->name('put');
 
     Route::get('/delete/{uuid}','delete'    )->name('delete');
-    Route::get('/destroy',      'destroy'   )->name('destroy');
+    Route::post('/destroy',      'destroy'   )->name('destroy');
 });
 // #####################
 // #### Controller Product
 // #####################
 
 Route::controller(ProductController::class)
-->prefix('/product')->name('product')
+->prefix('/product')->name('product.')
 ->group(function() {
     Route::get('/list',         'list'      )->name('list');
     Route::get('/show/{uuid}',  'show'      )->name('show');
@@ -62,5 +62,5 @@ Route::controller(ProductController::class)
     Route::put('/put',          'put'       )->name('put');
 
     Route::get('/delete/{uuid}','delete'    )->name('delete');
-    Route::get('/destroy',      'destroy'   )->name('destroy');
+    Route::post('/destroy',      'destroy'   )->name('destroy');
     });

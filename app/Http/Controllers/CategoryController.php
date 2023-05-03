@@ -31,6 +31,7 @@ class CategoryController extends Controller
             'slug' => $request->slug,
             'description' => $request->description
         ]);
+        return redirect()->route('category.list');
     }
 
     public function update($uuid)
@@ -39,7 +40,7 @@ class CategoryController extends Controller
         return view('category/update', compact('category'));
     }
 
-    public function put($uuid, Request $request)
+    public function put(Request $request)
     {
         $category = Category::where('uuid', $request->uuid)->first();
 
@@ -48,6 +49,7 @@ class CategoryController extends Controller
             'slug' => $request->slug,
             'description' => $request->description
         ]);
+        return redirect()->route('category.list');
     }
 
     public function delete($uuid)
@@ -61,5 +63,6 @@ class CategoryController extends Controller
         //utiliza-se a função first porque $request virá em forma de array
         $category = Category::where('uuid', $request->uuid)->first();
         $category->delete();
+        return redirect()->route('category.list');
     }
 }

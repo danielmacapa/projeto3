@@ -1,18 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+@extends('template.master')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=
-    , initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Lista de categorias</title>
-</head>
+@section('title')
+    Cadastro de Produtos
+@endsection
 
-<body>
-<body>
-    <h1>Aqui será a lista de categorias</h1>
-
-</body>
+@section('content')
+    <div class='container-fluid'>
+        <form class='form-control' method="post" action="{{ route('product.store') }}">
+            @csrf
+            <div>
+                <label class="form_label">Nome</label>
+                <input type="text" name="name" placeholder="Nome" required><br>
+                <label class="form_label">Categoria</label>
+                <select name="category_id">
+                    @forelse ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option><br>
+                    @empty
+                    @endforelse
+                </select>
+                <label class="form_label">Slug</label>
+                <input type="text" name="slug" placeholder="Slug" required><br>
+                <label class="form_label">Preço</label>
+                <input type="text" name="price" placeholder="Preço" required><br>
+                <label class="form_label">Quantidade</label>
+                <input type="text" name="amount" placeholder="Qde" required><br>
+            </div>
+            <div class="submit">
+                <input type="hidden" name="action" value="Enviar">
+                <button type="submit" name="Enviar" class="submit_btn">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+@endsection
 
 </html>

@@ -19,35 +19,37 @@ class ProductController extends Controller
     public function show($uuid)
     {
         $product = Product::where('uuid', $uuid)->first();
-        return view('product-show', compact('product'));
+        return view('product/show', compact('product'));
     }
 
     public function create()
     {
         $categories = Category::all();
-        return view('product-create', compact('categories'));
+        return view('product/create', compact('categories'));
     }
 
     public function store(Request $request)
     {
         $product = Product::create([
             'uuid' => Str::uuid(),
+            'category_id' => $request->category_id,
             'name' => $request->name,
             'slug' => $request->slug,
             'price' => $request->price,
             'amount' => $request->amount,
             'description' => $request->description
         ]);
+        return redirect()->route('product.list');
     }
 
     public function update($uuid)
     {
         $categories = Category::all();
         $product = Product::where('uuid', $uuid)->first();
-        return view('product-update', compact('product', 'categories'));
+        return view('product/update', compact('product', 'categories'));
     }
 
-    public function put($uuid, Request $request)
+    public function put(Request $request)
     {
         $product = Product::where('uuid', $request->uuid)->first();
 
@@ -59,16 +61,18 @@ class ProductController extends Controller
             'amount' => $request->amount,
             'description' => $request->description
         ]);
+        return redirect()->route('product.list');
     }
 
     public function delete($uuid)
     {
         $product = Product::where('uuid', $uuid)->first();
-        return view('product-delete', compact('product'));
+        return view('product/delete', compact('product'));
     }
 
-    public function deleteConfirm(Request $request){
+    public function destroy(Request $request){
         $product = Product::where('uuid', $request->uuid)->first();
         $product->delete();
+        return redirect()->route('product.list');
     }
 }

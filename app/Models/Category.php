@@ -12,6 +12,14 @@ class Category extends Model
 {
     use HasFactory, SoftDeletes;
 
+    // define campos editáveis pelo usuário
+    protected $fillable = [
+        'uuid',
+        'name',
+        'slug',
+        'description'
+    ];
+
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);

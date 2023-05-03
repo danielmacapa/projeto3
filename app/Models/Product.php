@@ -12,6 +12,17 @@ class Product extends Model
 {
     use HasFactory, SoftDeletes;
 
+        // define campos editáveis pelo usuário
+        protected $fillable = [
+            'uuid',
+            'name',
+            'slug',
+            'category_id',
+            'price',
+            'amount',
+            'description'
+        ];
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);

@@ -6,14 +6,18 @@
     <meta name="viewport" content="width=
     , initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Lista de categorias</title>
+    <title>Excluir Produto</title>
 </head>
 
 <body>
+    Deseja realmente excluir o produto: {{ $product->name }} ?<br><br>
 
-    <body>
-        <h1>Aqui será a lista de categorias</h1>
+    <form method="POST" action="{{ route('product.destroy') }}">
+        @csrf
+        <input type="hidden" name="uuid" value="{{ $product->uuid }}">
+        <button type="submit">Confirmar exclusão</button>
+    </form>
 
-    </body>
+</body>
 
 </html>
