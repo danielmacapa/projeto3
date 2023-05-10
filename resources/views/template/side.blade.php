@@ -24,6 +24,13 @@
                                 <p> Produtos </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('logout') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p> Sair </p>
+                            </a>
+                        </li>
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
-
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,23 +15,16 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () { return view('welcome'); });
 
-// Excluir 'verified' da rota dashboard devido não possuir servidro de e-mail
-//Route::get('/dashboard', function () {
-//    return view('dashboard');
-//})->middleware(['auth', 'verified'])->name('dashboard');
+// rotas para as views (uma para cada função do CRUD)
 
-    // Rota para Dashboard sem o 'verified'
-    Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () { return view('dashboard'); })->name('dashboard');
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// #####################
+// #### Controller Category
+// #####################
 
-// Aqui vão as rotas criadas no projeto
+// é possível economizar código através da função group com os comandos controller (classe), prefix (p/endereço) e name.
+
 Route::controller(CategoryController::class)
 ->prefix('/category')->name('category.')
 ->group(function() {
@@ -73,7 +64,3 @@ Route::controller(ProductController::class)
     Route::get('/delete/{uuid}','delete'    )->name('delete');
     Route::post('/destroy',      'destroy'   )->name('destroy');
     });
-
-});
-
-require __DIR__.'/auth.php';
