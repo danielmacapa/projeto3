@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{ asset('adminlte/css/adminlte.min.css') }}">
 </head>
 
-<body class="hold-transition login-page">
+<body class="login-page">
     <div class="login-box">
         <!-- aviso de erros -->
         @if ($errors->any())

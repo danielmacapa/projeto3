@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+    <a class='btn btn-primary btn-sm' href="{{ route('category.create') }}"><i class='fa fa-plus'></i> Cadastrar Novo
+    </a>
+
     <table class="table">
         <tr>
             <th>Nome</th>
@@ -26,4 +29,4 @@
             </tr>
         @endforelse
     </table>
-    @endsection
+@endsection

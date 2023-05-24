@@ -44,6 +44,7 @@
             </tr>
         @endforelse
     </table>
+    {{ auth()->user()->id }}
 
 </body>
 

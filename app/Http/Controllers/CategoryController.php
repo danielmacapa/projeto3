@@ -28,7 +28,7 @@ class CategoryController extends Controller
         // regras de validação (precisa pedir para mostrar o erro, está no master template)
         $request->validate([
             'name' => 'required|string|min:5|max:10',
-            'description' => ''
+            'slug' => 'required|string'
         ]);
 
         $logged = auth()->user();
@@ -40,9 +40,9 @@ class CategoryController extends Controller
             'description' => $request->description
         ]);
         return redirect()->route('category.list')
-        ->with('success', 'categoria cadastrada com sucesso!');
+        ->with('success', 'Categoria cadastrada com sucesso!');
         // with: mensagem
-        
+
     }
 
     public function update($uuid)

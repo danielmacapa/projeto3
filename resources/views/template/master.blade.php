@@ -18,7 +18,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('adminlte/css/adminlte.min.css') }}">
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="sidebar-mini">
     <div class="wrapper">
 
         <!-- Navbar -->
@@ -47,27 +47,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Main content -->
             <!-- Alerta de erros para usuário -->
             @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li> {{ $error }} </li>
-                    @endforeach
-                </ul>
-            </div>
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li> {{ $error }} </li>
+                        @endforeach
+                    </ul>
+                </div>
             @endif
 
             <!-- validação -->
-            @if(session()->has('success'))
-            <div class="alert alert-success">
-                {{session('success')}}
-            </div>
+            @if (session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
             @endif
 
             <!-- validação -->
-            @if(session()->has('error'))
-            <div class="alert alert-danger">
-                {{session('error')}}
-            </div>
+            @if (session()->has('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
             @endif
 
 
