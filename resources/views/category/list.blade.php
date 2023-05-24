@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('template.master')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=
-    , initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Lista de categorias</title>
-</head>
+@section('title')
+    Cadastro de Categorias
+@endsection
 
-<body>
-    <h1>Lista de categorias</h1>
-    <table>
+@section('content')
+    <table class="table">
         <tr>
             <th>Nome</th>
             <th>slug</th>
@@ -32,6 +26,4 @@
             </tr>
         @endforelse
     </table>
-</body>
-
-</html>
+    @endsection

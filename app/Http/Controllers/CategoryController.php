@@ -25,13 +25,24 @@ class CategoryController extends Controller
     }
     public function store(Request $request)
     {
+        // regras de validação (precisa pedir para mostrar o erro, está no master template)
+        $request->validate([
+            'name' => 'required|string|min:5|max:10',
+            'description' => ''
+        ]);
+
+        $logged = auth()->user();
+
         $category = Category::create([
             'uuid' => Str::uuid(),
             'name' => $request->name,
             'slug' => $request->slug,
             'description' => $request->description
         ]);
-        return redirect()->route('category.list');
+        return redirect()->route('category.list')
+        ->with('success', 'categoria cadastrada com sucesso!');
+        // with: mensagem
+        
     }
 
     public function update($uuid)

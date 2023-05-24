@@ -1,4 +1,3 @@
-<html>
 @extends('template.master')
 
 @section('title')
@@ -33,5 +32,3 @@
         </form>
     </div>
 @endsection
-
-</html>

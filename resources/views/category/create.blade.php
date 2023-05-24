@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+@extends('template.master')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cadastro de Categorias</title>
-</head>
+@section('title')
+    Cadastro de Categorias
+@endsection
 
-<body>
-    <h1>Formulário de Cadastro</h1>
+@section('content')
+    <div class='container-fluid'>
     <form class="form" method="post" action="{{ route('category.store') }}">
         @csrf
         <div class="form_grupo">
@@ -23,7 +19,5 @@
             <button type="submit" name="Enviar" class="submit_btn">Cadastrar</button>
         </div>
     </form>
-
-</body>
-
-</html>
+    </div>
+@endsection
